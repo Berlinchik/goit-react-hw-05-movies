@@ -17,6 +17,10 @@ export default function Movies() {
   const query = searchParams.get('query');
   const location = useLocation();
 
+  const onSubmit = query => {
+    setSearchParams({ query: query });
+  };
+
   useEffect(() => {
     if (!query) return;
     setLoading(true);
@@ -33,7 +37,7 @@ export default function Movies() {
 
   return (
     <Section>
-      <Form></Form>
+      <Form onSubmit={onSubmit} />
       {loading && (
         <div
           style={{ marginTop: 30, display: 'flex', justifyContent: 'center' }}

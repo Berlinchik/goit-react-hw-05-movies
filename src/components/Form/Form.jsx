@@ -1,12 +1,9 @@
 import { FormStyled, Button, Input } from './Form.styled';
-import { useSearchParams } from 'react-router-dom';
 
-const Form = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
+const Form = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
-    setSearchParams({ query: e.target.text.value });
+    onSubmit(e.target.text.value);
   };
   return (
     <FormStyled onSubmit={handleSubmit}>
